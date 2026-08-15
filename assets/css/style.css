@@ -181,7 +181,7 @@ html {
   font-family: var(--font-primary);
   font-size: var(--fs-base);
   scroll-behavior: smooth;
-  height: 300vh;
+  /* height: 300vh; */
 }
 
 body {
@@ -194,10 +194,12 @@ body {
 ::-webkit-scrollbar {
   width: 12px;
 }
+
 /* track of the slider */
 ::-webkit-scrollbar-track {
   background-color: var(--neutral-90);
 }
+
 /* the color of the slider itself */
 ::-webkit-scrollbar-thumb {
   background-color: var(--neutral-60);
@@ -217,19 +219,18 @@ body {
   #REUSED STYLE
 \*-----------------------------------*/
 
-.material-symbols-outlined{
+.material-symbols-outlined {
   display: block;
   width: 1em;
   height: 1em;
   overflow: hidden;
-  font-variation-settings: 
-  'FILL' 0
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24;
+  font-variation-settings:
+    'FILL' 0 'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
 }
 
-.container{
+.container {
   max-width: 580px;
   width: 100%;
   padding-inline: 16px;
@@ -244,7 +245,7 @@ body {
   #COMPONENT
 \*-----------------------------------*/
 /* Button */
-.btn{
+.btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -256,37 +257,43 @@ body {
   transition: var(--transition-duration-quick) var(--transition-easing-quick);
 }
 
-.btn-fill{
+.btn-fill {
   background-color: var(--primary-100);
   color: var(--neutral-100);
 }
-.btn-fill:where(:hover, :focus){
+
+.btn-fill:where(:hover, :focus) {
   background-color: var(--primary-90);
   box-shadow: var(--shadow-1);
 }
-.btn-fill:where(:active, :focus-visible){
+
+.btn-fill:where(:active, :focus-visible) {
   background-color: var(--primary-80);
 }
 
 /* button outline */
-.btn-outline{
+.btn-outline {
   color: var(--primary-100);
   box-shadow: inset 0 0 0 2px var(--primary-100);
 }
-.btn-outline:where(:hover, :focus, :focus-visible){
+
+.btn-outline:where(:hover, :focus, :focus-visible) {
   color: var(--neutral-90);
 }
-.btn-outline:hover{
+
+.btn-outline:hover {
   background-color: var(--primary-100);
 }
-.btn-outline:focus{
+
+.btn-outline:focus {
   background-color: var(--primary-90);
 }
-.btn-outline:where(:active, :focus-visible){
+
+.btn-outline:where(:active, :focus-visible) {
   background-color: var(--primary-80);
 }
 
-.icon-btn{
+.icon-btn {
   height: 40px;
   width: 40px;
   display: grid;
@@ -295,10 +302,10 @@ body {
   color: var(--neutral-10);
   border-radius: var(--radius-small);
   box-shadow: var(--shadow-3);
-    transition: var(--transition-duration-quick) var(--transition-easing-quick);
+  transition: var(--transition-duration-quick) var(--transition-easing-quick);
 }
 
-.icon-btn:where(:hover, :focus-visible){
+.icon-btn:where(:hover, :focus-visible) {
   background-color: var(--neutral-80);
 }
 
@@ -308,8 +315,7 @@ body {
   #HEADER
 \*-----------------------------------*/
 
-.navbar{display: none;}
-.header{
+.header {
   position: fixed;
   left: 0;
   top: 0;
@@ -317,18 +323,24 @@ body {
   height: 100px;
   z-index: 4;
 }
-.header.active{
+
+.header.active {
   animation: slide_in 500ms ease forwards;
   height: 72px;
   background-color: var(--primary-40);
 }
 
-@keyframes slide_in{
-  0%{transform: translateY(-100%);}
-  100%{transform: translateY(0);}
+@keyframes slide_in {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
-.header .container{
+.header .container {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -337,16 +349,65 @@ body {
 }
 
 .nav-toggle-btn .close,
-.nav-toggle-btn.active .open{
+.nav-toggle-btn.active .open {
   display: none;
 }
 
 .nav-toggle-btn .open,
-.nav-toggle-btn.active .close{
+.nav-toggle-btn.active .close {
   display: block;
 }
 
+.navbar {
+  position: absolute;
+  top: 85%;
+  right: 16px;
+  background-color: var(--neutral-100);
+  min-width: 260px;
+  padding: 10px;
+  border-radius: var(--radius-large);
+  visibility: hidden;
+  opacity: 0.0;
+  scale: 0.4;
+  transition: var(--transition-duration-quick) var(--transition-easing-quick);
+  box-shadow: var(--shadow-1);
+  transform-origin: top right;
+  z-index: 4;
+}
 
+.navbar.active {
+  visibility: visible;
+  opacity: 1;
+  scale: 1;
+}
+
+.navbar,
+.navbar-list,
+.navbar-wrapper {
+  display: grid;
+  gap: 12px;
+}
+
+.btn-link,
+.navbar-link {
+  color: var(--neutral-30);
+  padding: 6px 12px;
+  transition: var(--transition-duration-quick) var(--transition-easing-quick);
+}
+
+.btn-link {
+  border-block-start: 1px solid var(--neutral-90);
+  padding-block-start: 14px;
+}
+
+:is(.btn-link, .navbar-link):is(:hover, :focus-visible),
+.navbar-link.active {
+  color: var(--primary-100);
+}
+
+.navbar .btn{
+  min-width: 100%;
+}
 
 
 
